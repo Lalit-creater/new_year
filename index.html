@@ -162,7 +162,7 @@ position:absolute;
 top:0;
 width:50%;
 height:100%;
-background:red;
+background:linear-gradient(#8e0000,#ff0000);
 }
 
 .left-curtain{left:-50%;}
@@ -170,6 +170,25 @@ background:red;
 
 @keyframes closeLeft{to{left:0;}}
 @keyframes closeRight{to{right:0;}}
+
+/* THANK YOU TEXT */
+.thank-text{
+position:relative;
+z-index:10000;
+font-size:34px;
+font-weight:900;
+color:white;
+text-align:center;
+text-shadow:0 0 25px yellow;
+opacity:0;
+animation:showThanks 2s forwards 1.5s;
+}
+@keyframes showThanks{
+from{opacity:0;transform:scale(0.5);}
+to{opacity:1;transform:scale(1);}
+}
+
+canvas{position:fixed;left:0;top:0;pointer-events:none;}
 </style>
 </head>
 
@@ -205,6 +224,7 @@ background:red;
 <div class="closing-screen" id="closeScreen">
 <div class="left-curtain" id="left"></div>
 <div class="right-curtain" id="right"></div>
+<h1 class="thank-text">✨ THANK YOU FOR VISITING ✨</h1>
 </div>
 
 <script>
