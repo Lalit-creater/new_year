@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{
+height:100vh;
+background:linear-gradient(120deg,#000428,#004e92);
+background-size:400% 400%;
+animation:grad 8s infinite alternate;
+overflow:hidden;
+color:white;
+}
+@keyframes grad{
+from{background-position:0% 0%;}
+to{background-position:100% 100%;}
+}
+
+.container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+/* HEADING */
+.title{
+font-size:45px;
+font-weight:900;
+letter-spacing:2px;
+background:linear-gradient(45deg,#ff00ff,#ffff00,#00ffff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+text-shadow:0 0 25px rgba(255,255,255,0.6);
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 20px #ff00ff;}
+to{text-shadow:0 0 40px #ffff00;}
+}
+.tagline{font-size:18px;margin-top:5px;opacity:0.95;}
+
+/* MESSAGE CARD */
+#welcomeText{
+display:none;
+margin-top:20px;
+padding:25px;
+border-radius:20px;
+background:#ffffffee;
+color:#000;
+font-size:24px;
+font-weight:800;
+box-shadow:0 0 40px rgba(255,255,255,0.9);
+animation:pop 0.6s forwards;
+line-height:1.6;
+text-align:center;
+min-height:150px;
+}
+@keyframes pop{
+from{transform:scale(0);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+/* COUNTDOWN */
+#timer{
+margin-top:10px;
+font-size:22px;
+font-weight:800;
+color:#fffb00;
+text-shadow:0 0 15px #ff0;
+}
+
+/* INPUT BOX */
+.box{
+margin-top:25px;
+padding:30px;
+border-radius:20px;
+background:#fffffffa;
+box-shadow:0 0 35px rgba(255,255,255,0.8);
+border:3px solid white;
+animation:popbox .6s ease;
+}
+@keyframes popbox{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+.box p{
+font-size:22px;font-weight:900;color:#000;margin-bottom:10px;
+}
+
+/* INPUT */
+input{
+padding:12px 18px;
+border-radius:12px;
+border:2px solid #000;
+font-size:18px;
+outline:none;
+width:230px;
+text-align:center;
+color:#000;
+background:white;
+}
+
+/* BUTTON */
+button{
+margin-top:12px;
+padding:12px 25px;
+border-radius:12px;
+border:2px solid black;
+font-weight:900;
+font-size:18px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff00ff,#ff9900);
+color:black;
+box-shadow:0 0 20px rgba(255,0,255,.8);
+transition:.3s;
+}
+button:hover{
+transform:scale(1.08);
+background:linear-gradient(45deg,#ffff00,#ff00ff);
+}
+
+/* MUSIC BUTTON */
+#playBtn{display:none;}
+
+/* EMOJI */
+.emoji{
+position:fixed;font-size:30px;
+animation:fall linear infinite;
+}
+@keyframes fall{0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);}}
+
+/* BALLOON */
+.balloon{
+position:fixed;bottom:-150px;font-size:50px;
+animation:fly linear infinite;
+}
+@keyframes fly{0%{transform:translateY(0);}100%{transform:translateY(-110vh);}}
+
+/* FOOTER */
+.footer{
+margin-top:15px;
+font-size:18px;
+font-weight:900;
+color:#00ffff;
+text-shadow:0 0 20px cyan;
+}
+
+/* 🎭 CURTAIN CLOSING SCREEN */
+.closing-screen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:9999;
+overflow:hidden;
+}
+
+.left-curtain,.right-curtain{
+position:absolute;
+top:0;
+width:50%;
+height:100%;
+background:linear-gradient(#8e0000,#ff0000);
+}
+
+.left-curtain{left:-50%;}
+.right-curtain{right:-50%;}
+
+.thankyou{
+font-size:55px;
+font-weight:900;
+color:white;
+text-shadow:0 0 25px yellow;
+opacity:0;
+animation:thanks 1.5s forwards;
+}
+
+@keyframes closeLeft{
+to{left:0;}
+}
+@keyframes closeRight{
+to{right:0;}
+}
+@keyframes thanks{
+from{opacity:0;transform:scale(0);}
+to{opacity:1;transform:scale(1);}
+}
+
+/* 🎨 INSTAGRAM BUTTON */
+.insta-btn{
+margin-top:10px;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+color:white;
+background:radial-gradient(circle at 30% 30%, #fdf497 0%, #fd5949 30%, #d6249f 60%, #285AEB 100%);
+box-shadow:0 0 20px #ff0099;
+text-decoration:none;
+transition:0.3s;
+}
+.insta-btn:hover{
+transform:scale(1.15);
+box-shadow:0 0 35px #ff00ff;
+}
+
+canvas{position:fixed;left:0;top:0;pointer-events:none;}
+</style>
+</head>
+
+<body>
+
+<!-- YOUR MUSIC -->
+<audio id="music" src="background-music-456267%20(1).mp3" autoplay playsinline></audio>
+
+<!-- Typing click sound -->
+<audio id="typeSound" src="https://cdn.pixabay.com/download/audio/2021/09/07/audio_ba10542f44.mp3?filename=keyboard-click-153941.mp3"></audio>
+
+<div class="container">
+
+<h1 class="title">🎉 Happy New Year 2026 🎉</h1>
+<p class="tagline">Let’s start this year with joy, smiles and celebration ✨</p>
+
+<div id="timer"></div>
+
+<div class="box" id="inputBox">
+<p>Enter Your Name & Start Celebration 🎊</p>
+<input type="text" id="username" placeholder="Your Name">
+<br>
+<button onclick="start()">Celebrate 🎆</button>
+<button id="playBtn" onclick="forcePlay()">Play Music 🔊</button>
+</div>
+
+<h1 id="welcomeText"></h1>
+
+<!-- ⭐ INSTAGRAM BUTTON HERE -->
+<a class="insta-btn" 
+href="https://www.instagram.com/validglobe?igsh=MWJ3aG8zZTBuMTB0" 
+target="_blank">📸</a>
+
+<p class="footer">Made with ❤️ by ~Lalit</p>
+</div>
+
+<canvas id="fireworks"></canvas>
+
+<!-- 🎭 CLOSING CURTAIN -->
+<div class="closing-screen" id="closeScreen">
+<div class="left-curtain" id="left"></div>
+<div class="right-curtain" id="right"></div>
+<div class="thankyou">✨ THANK YOU FOR VISITING ✨</div>
+</div>
+
+<script>
+// COUNTDOWN
+let nextYear=new Date().getFullYear()+1;
+let target=new Date(`Jan 1, ${nextYear} 00:00:00`).getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=target-now;
+let d=Math.floor(diff/(1000*60*60*24));
+let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((diff%(1000*60*60))/(1000*60));
+let s=Math.floor((diff%(1000*60))/1000);
+document.getElementById("timer").innerHTML=`Countdown: ${d}d ${h}h ${m}m ${s}s`;
+},1000);
+
+// START
+function start(){
+let name=document.getElementById("username").value;
+if(name==""){alert("Please Enter Your Name 😊");return;}
+document.getElementById("inputBox").style.display="none";
+let text=document.getElementById("welcomeText");
+text.style.display="block";
+let msg=`${name}, I hope this new year brings you endless happiness, success and beautiful moments to cherish. May your dreams come closer to reality and you always stay surrounded by positivity, love and good people. Cheers to a wonderful year ahead! 🎆`;
+typeSmooth(text,msg);
+playMusic();
+emojiRain();
+startFireworks();
+balloons();
+
+// Curtain after 25 sec
+setTimeout(showCurtain,25000);
+}
+
+// MUSIC
+function playMusic(){
+let m=document.getElementById("music");
+m.volume=1;
+m.play().catch(()=>{document.getElementById("playBtn").style.display="inline-block";});
+}
+function forcePlay(){
+document.getElementById("music").play();
+document.getElementById("playBtn").style.display="none";
+}
+
+// TYPING
+function typeSmooth(element,text){
+element.innerHTML="";
+let i=0;
+let sound=document.getElementById("typeSound");
+let typer=setInterval(()=>{
+if(i<text.length){
+element.innerHTML += text.charAt(i);
+if(text[i]!=" "){ sound.currentTime=0; sound.play(); }
+i++;
+}else clearInterval(typer);
+},50);
+}
+
+// EMOJIS
+function emojiRain(){
+const emojis=["🎉","🎊","✨","🎆","🥳","💥","🎇"];
+setInterval(()=>{
+let e=document.createElement("div");
+e.className="emoji";
+e.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+e.style.left=Math.random()*100+"vw";
+e.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(e);
+setTimeout(()=>e.remove(),5000);
+},250);
+}
+
+// BALLOONS
+function balloons(){
+setInterval(()=>{
+let b=document.createElement("div");
+b.className="balloon";
+b.innerText="🎈";
+b.style.left=Math.random()*100+"vw";
+b.style.animationDuration=(Math.random()*5+5)+"s";
+document.body.appendChild(b);
+setTimeout(()=>b.remove(),6000);
+},400);
+}
+
+// FIREWORKS
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+let particles=[];
+function firework(){
+let x=Math.random()*canvas.width;
+let y=Math.random()*canvas.height/2;
+let colors=["#ff0","#0ff","#fff","#ff00ff","#00ff00","#ff6600"];
+for(let i=0;i<60;i++){
+particles.push({x,y,r:Math.random()*3+2,c:colors[Math.floor(Math.random()*colors.length)],sx:(Math.random()*4-2),sy:(Math.random()*4-2),a:1});
+}}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach((p,i)=>{
+p.x+=p.sx;p.y+=p.sy;p.a-=0.02;
+if(p.a<=0)particles.splice(i,1);
+ctx.globalAlpha=p.a;
+ctx.fillStyle=p.c;
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(animate);
+}
+function startFireworks(){
+setInterval(firework,800);
+animate();
+}
+
+/* 🎭 CURTAIN FUNCTION */
+function showCurtain(){
+document.getElementById("closeScreen").style.display="flex";
+document.getElementById("left").style.animation="closeLeft 2s forwards";
+document.getElementById("right").style.animation="closeRight 2s forwards";
+}
+</script>
+</body>
+</html>
